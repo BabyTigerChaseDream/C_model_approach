@@ -7,37 +7,27 @@
  * provided that this copyright notice is retained.      *
  *********************************************************/
 
-/* readline.c (Chapter 16, page 395) */
+/* reverse.c (Chapter 8, page 164) */
+/* Reverses a series of numbers */
 
-#include <ctype.h>
 #include <stdio.h>
-#include "readline.h"
+#include <stdlib.h>
 
-/*** original version 
-int read_line(char str[], int n)
+#define N 5 
+
+//int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-  int ch, i = 0;
+  int i, sum=0;
+    
+  //printf("[argc] %d\n",argc);
+  //printf("[argv] %s \n", *argv);
 
-  while ((ch = getchar()) != '\n') {
-    if (i < n)
-      str[i++] = ch;
-  }
-  str[i] = '\0';
-  return i;
-}
-*/
+  for (i = argc - 1; i > 0; i--)
+    //printf("%s ", argv[i]);
+    sum += atoi(argv[i]);
 
-int read_line(char str[], int n)
-{
-  int ch, i = 0;
+  printf("sum is %d\n", sum);
 
-  while (isspace(ch = getchar()))
-    ;
-  while (ch != '\n' && ch != EOF) {
-    if (i < n)
-      str[i++] = ch;
-    ch = getchar();
-  }
-  str[i] = '\0';
-  return i;
+  return 0;
 }

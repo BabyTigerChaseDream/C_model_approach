@@ -3,20 +3,22 @@
 #include<time.h>
 
 #define UP 0 
-#define DOWN 1 
+#define DOWN 3 
 #define LEFT 2 
-#define RIGHT 3 
+#define RIGHT 1 
 
 #define STEP 4
 #define LETTER 26
+void generate_random_walk(char walk[10][10]);
+void print_array(char walk[10][10]);
 
-void main(void)
+void generate_random_walk(char walk[][10], int len)
 {
-    char array[10][10], ch;
+    char ch;
     int i,j, next, num, delta;
 
     // init array 
-    for (i=0;i<10;i++)
+    for (i=0;i<len;i++)
     {
         for (j=0;j<10;j++)
         {
@@ -24,19 +26,21 @@ void main(void)
         }
     }
     
+    // generate random number
     srand((unsigned) time(NULL) );
 
     for (i=0,j=0,ch='A',num=1; num<=100;num++)
     {
+
+        next = rand() % STEP; 
+
         if (array[i][j] == '.')
         {
             array[i][j] = ch;
         }else{
-            break;
+            next = 3-next;
         }
-
         
-        next = rand() % STEP; 
         switch(next)
         {
             case UP:
@@ -69,12 +73,16 @@ void main(void)
         ch = 'A' + delta;
     }
     
+}
+void print_array(char walk[][10], int len)
+{
+    int i,j;
     // print array 
-    for (i=0;i<10;i++)
+    for (i=0;i<len;i++)
     {
         for (j=0;j<10;j++)
         {
-            printf("%3c",array[i][j]);
+            printf("%3c",walk[i][j]);
         }
         printf("\n");
     }
