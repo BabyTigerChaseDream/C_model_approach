@@ -1,0 +1,4 @@
+1         Ashwini    17     FEMALE
+2         Rutuja     18     FEMALE 
+3         Priyanka   17     FEMALE
+4         Abhijeet   19     MALE
